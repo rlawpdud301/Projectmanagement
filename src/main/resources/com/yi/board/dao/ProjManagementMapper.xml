@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.board.dao.ProjManagementMapper">
+	<insert id="insert">
+		INSERT INTO projmanagement.proj
+		(proj_name, proj_cont, start_date, end_date, progress)
+		VALUES(#{proj_name}, #{proj_cont}, #{start_date}, #{end_date}, #{progress})
+	</insert>
+
+	<select id="select" resultType="ProjManagement">
+		SELECT proj_no, proj_name, proj_cont, start_date, end_date, progress
+		FROM projmanagement.proj		
+	</select>
+	
+	<select id="selectByNo" resultType="ProjManagement">
+		SELECT proj_no, proj_name, proj_cont, start_date, end_date, progress
+		FROM projmanagement.proj
+		where proj_no =#{proj_no}
+	</select>
+	<delete id="delet">
+		DELETE FROM projmanagement.proj
+		WHERE proj_no=#{proj_no}		
+	</delete>
+	
+	<update id="update">
+		UPDATE projmanagement.proj
+		SET proj_name=#{proj_name}, proj_cont=#{proj_cont}, start_date=#{start_date}, end_date=#{end_date}, progress=#{progress}
+		WHERE proj_no=#{proj_no};
+		
+	</update>
+	
+
+</mapper>
